@@ -18,6 +18,13 @@
   			return data.results.url.shortUrl;
   		});
   };*/
+  
+  // mark links as such (plain text -> html)
+  String.prototype.linkify = function() {
+	return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/, function(m) {
+    	return m.link(m);
+	});
+  };
 
   $.fn.tweetComments = function(shorturl, twittername) {
   	var thediv = $(this);
@@ -29,8 +36,9 @@
   	$.getJSON("http://search.twitter.com/search.json?q="+encodeURIComponent(shorturl)+"&callback=?",
   		function(data) {
   			$.each(data.results, function(i, item) {
-  				$("<div/>").addClass("comment").html('<cite><a href="http://twitter.com/'+item.from_user+'">'+item.from_user+'</a>:</cite> <p>'+item.text+'</p>').appendTo(thediv);
+  				$("<div/>").addClass("comment").html('<cite><a href="http://twitter.com/'+item.from_user+'">'+item.from_user+'</a>:</cite> <p>'+item.text.linkify()+'</p><p class="date">'+item.created_at+'</p>').appendTo(thediv);
   			});
+  			$("#tweet-comments .date").relatizeDate();
   			if (data.results.length == 0) {
   				$("<div/>").addClass("no-comments").html('<p>There are no comments.</p>').appendTo(thediv);
   			}
