@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+	<title>Tweet a Comment</title>
+	
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+	
+	<style>
+		body {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			width: 620px;
+			margin: 0 auto;
+		}
+	</style>
+	
+	<script type="text/javascript" src="javascripts/jquery.js"></script>
+	<script type="text/javascript" src="javascripts/tweet-comments.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#tweet-comments").tweetComments("killercup", "killercup");
+		});	
+	</script>
+</head>
+
+<body id="body">
+	
+	<h1>Tweet a Comment!</h1>
+	
+	<p>Das hier wird einmal wunderbar formatierter, hoch interessanter Text sein, der ein solches Ausma&szlig; von sogenannter &raquo;Awesomeness&laquo; haben wird, dass es f&uuml;r Normalsterbliche kaum m&ouml;glich sein wird, ihn an einem St&uuml;ck zu lesen. Deshalb ist es auch unerl&auml;sslich, hir einen Absatz zu machen und noch eine stupide Grafik, bzw. ein &raquo;Diagramm&laquo; einzuf&uuml;gen. Faszinierend, oder?</p>
+		
+	<p>Es war nicht seine Absicht, etwas zu schreiben, ohne sich dar&uuml;ber Gedanken gemacht zu haben, was man vom ihm erwartete zu h&ouml;ren. Doch das alles ging ihm zu weit. Es war ihm unm&ouml;glich, an etwas anderes zu denken, als das Schreiben. Es ging ihm nicht um das Vermitteln von Information &ndash; geschweige denn Emotion &ndash;, sondern einzig und allein um den Prozess des Schreibens.</p>
+	
+	<p>Das Schreiben selbst war f&uuml;r ihn eine Findung von Worten die er immer schon gesagt haben wollte. Es erlaubte ihm, sich so auszudr&uuml;cken, wie er es f&uuml;r angemessen erachtete und gleichzeitig den Fluss seiner Gedanken der ganzen Welt als kleinen und vollkommen optionalen Vorschlag zu unterbreiten, den andere Menschen annehmen und so seine Ideen in die ihren integrieren k&ouml;nnen.</p>
+	
+	<h2>Kommentare? Nein, Tweets!</h2>
+	
+	<div id="tweet-comments">&nbsp;</div>
+	
+</body>
+</html>
