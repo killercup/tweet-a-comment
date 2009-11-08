@@ -29,8 +29,11 @@
   	$.getJSON("http://search.twitter.com/search.json?q="+encodeURIComponent(shorturl)+"&callback=?",
   		function(data) {
   			$.each(data.results, function(i, item) {
-  				$("<div/>").addClass("comment").html('<cite>'+item.from_user+':</cite> <p>'+item.text+'</p>').appendTo(thediv);
+  				$("<div/>").addClass("comment").html('<cite><a href="http://twitter.com/'+item.from_user+'">'+item.from_user+'</a>:</cite> <p>'+item.text+'</p>').appendTo(thediv);
   			});
+  			if (data.results.length == 0) {
+  				$("<div/>").addClass("no-comments").html('<p>There are no comments.</p>').appendTo(thediv);
+  			}
   		});
   	
    };
