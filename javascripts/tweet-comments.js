@@ -6,19 +6,6 @@
 
 ;(function($) {
 
-  /*function bitly(url, login, apikey) {
-  	return $.getJSON(
-  		"http://api.bit.ly/shorten?"
-	  		+"version=2.0.1"
-		    +"&longUrl="+encodeURIComponent(url)
-		    +"&login="+login
-		    +"&apiKey="+apikey
-		    +"&format=json&callback=?",
-  		function(data) {
-  			return data.results.url.shortUrl;
-  		});
-  };*/
-  
   // mark links as such (plain text -> html)
   String.prototype.linkify = function() {
 	return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/, function(m) {
@@ -35,10 +22,15 @@
   	// display tweets.
   	$.getJSON("http://search.twitter.com/search.json?q="+encodeURIComponent(shorturl)+"&callback=?",
   		function(data) {
+  			// append tweets.
   			$.each(data.results, function(i, item) {
   				$("<div/>").addClass("comment").html('<cite><a href="http://twitter.com/'+item.from_user+'">'+item.from_user+'</a>:</cite> <p>'+item.text.linkify()+'</p><p class="date">'+item.created_at+'</p>').appendTo(thediv);
   			});
+  			
+  			// relative dates. check relative_date.js!
   			$("#tweet-comments .date").relatizeDate();
+  			
+  			// if there are no tweets
   			if (data.results.length == 0) {
   				$("<div/>").addClass("no-comments").html('<p>There are no comments.</p>').appendTo(thediv);
   			}
@@ -47,4 +39,4 @@
    };
 
 })(jQuery);
-//bitly("http://flabs.org", "killercup", "R_e4afa7689ea94c99ce8bdd0b9871be21")
+// this is btw line forty-two. hope you all read hitchhiker's guide to the galaxy.
